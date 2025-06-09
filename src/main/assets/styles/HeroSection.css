@@ -1,0 +1,18 @@
+.hero {
+  height: 35vh;
+  padding: 5rem 2rem;
+  text-align: center;
+  background-color: #252525;
+  color: white;
+}
+
+.hero button {
+  margin-top: 1rem;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.hero h1 {
+  padding-top:4%;
+}

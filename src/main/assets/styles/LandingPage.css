@@ -1,0 +1,34 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #dbdbdb;
+  color: #000000;
+  transition: all 0.3s ease;
+  font-family: sans-serif;
+  overflow-x: hidden;
+}
+
+.container.dark {
+  background-color: #141414;
+  color: #ffffff;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.message-box {
+  text-align: center;
+  max-width: 600px;
+}
+
+.navbar-wrapper{
+  display: flex;
+  justify-content: center;
+  background-color: #252525;
+}

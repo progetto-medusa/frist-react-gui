@@ -1,11 +1,16 @@
 import '../assets/styles/HeroSection.css';
+import logo from '../assets/images/logo.png';
 
 export default function HeroSection() {
   return (
     <section className="hero">
-      <h1>Gestisci le tue avventure di D&D come mai prima d'ora</h1>
-      <p>Creazione schede, gestione partite, community e molto altro in un'unica piattaforma.</p>
-      <button>Provalo ora</button>
+      <img src={logo} alt="Medusa Logo" className="hero-image" />
+      <div className="hero-text">
+        <h1>Gestisci le tue avventure di D&D<br/><br/><span className="highlight-text">Come mai<br/>Prima d'ora</span></h1>
+        {/* <span style={{ height:"20px"}}></span>  */}
+
+        <button>Provalo ora</button>
+      </div>
     </section>
   );
 }

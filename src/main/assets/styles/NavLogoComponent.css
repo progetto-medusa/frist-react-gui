@@ -1,0 +1,23 @@
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem; /* Spazio tra testo e logo */
+  font-family: 'Cinzel Decorative', serif; /* Consigliato per il mood fantasy */
+  font-size: 2rem;
+}
+
+.logo-image {
+  width: 60px; /* Dimensione del logo, adattala se serve */
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.logo-image:hover {
+  transform: scale(1.1); /* Animazione al passaggio del mouse */
+}
+
+.logo-text {
+  font-weight: bold;
+}

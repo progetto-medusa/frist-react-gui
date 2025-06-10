@@ -1,9 +1,36 @@
 .hero {
-  height: 35vh;
-  padding: 5rem 2rem;
-  text-align: center;
-  background-color: #252525;
-  color: white;
+    position: relative;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10rem;
+    padding-top: 4rem;
+    text-align: center;
+    color: white;
+    background-color: #252525;
+    overflow: hidden;
+}
+
+.hero-image {
+position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: auto;
+    opacity: 0.35;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.hero-text {
+position: relative;
+    z-index: 2;
+    display: flex;
+    max-width: 600px;
+    flex-direction: column;
+    align-items: center;
 }
 
 .hero button {
@@ -13,6 +40,7 @@
   cursor: pointer;
 }
 
-.hero h1 {
-  padding-top:4%;
+.highlight-text{
+  font-family: 'PistonBlack';
+  font-size: 2.5rem;
 }

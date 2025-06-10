@@ -30,5 +30,41 @@
 .navbar-wrapper{
   display: flex;
   justify-content: center;
-  background-color: #252525;
+  background-color: #f9f9f9;
+}
+.custom-shape-divider-top-1749540503 {
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-top-1749540503 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 100px;
+    background: #f9f9f9;
+}
+
+.custom-shape-divider-top-1749540503 .shape-fill {
+    fill: #252525;
+}
+
+.custom-shape-divider-bottom-1749540671 {
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-bottom-1749540671 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 100px;
+    background:#f9f9f9;
+}
+
+.custom-shape-divider-bottom-1749540671 .shape-fill {
+    fill: #252525;
 }

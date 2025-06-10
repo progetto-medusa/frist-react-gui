@@ -14,8 +14,19 @@ export default function LandingPage({ isLoggedIn }) {
       <div className="navbar-wrapper">
         <Navbar isLoggedIn={isLoggedIn} />  
       </div>
+      <div class="custom-shape-divider-bottom-1749540671">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M602.45,3.86h0S572.9,116.24,281.94,120H923C632,116.24,602.45,3.86,602.45,3.86Z" class="shape-fill"></path>
+    </svg>
+</div>
       <HeroSection/>
+<div class="custom-shape-divider-top-1749540503">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M602.45,3.86h0S572.9,116.24,281.94,120H923C632,116.24,602.45,3.86,602.45,3.86Z" class="shape-fill"></path>
+    </svg>
+</div>
       <FeaturesSection/>
+      
       <CTASection/>
       <Footer />
     </div>

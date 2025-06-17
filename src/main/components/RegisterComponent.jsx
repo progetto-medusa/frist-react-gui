@@ -50,8 +50,9 @@ export default function RegisterComponent() {
 
   return (
     <div className={darkMode ? 'container dark' : 'container'}>
-      <Navbar isLoggedIn={false} />
-
+      <div className="navbar-wrapper">
+        <Navbar isLoggedIn={false} />
+      </div>
       <div className="login-container">
         <form className="login-form" onSubmit={handleSubmit}>
           <h2>Registrati</h2>

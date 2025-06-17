@@ -58,3 +58,6 @@ color: #95864a;
 .container.dark .theme-toggle:hover {
   background-color: #5c5c5c;
 }
+.header-content h1:hover {
+  cursor: pointer
+}

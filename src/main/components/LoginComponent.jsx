@@ -21,7 +21,9 @@ export default function LoginComponent({ onLogin }) {
 
   return (
     <div className={darkMode ? 'container dark' : 'container'}>
-        <Navbar isLoggedIn={false} />  
+        <div className="navbar-wrapper">
+            <Navbar isLoggedIn={false} />  
+        </div>
         <div className="login-container">
             <form className="login-form" onSubmit={handleSubmit}>
                 <h2>Login</h2>

@@ -1,9 +1,9 @@
 // import { useTheme } from '../contexts/ThemeContext';
-// import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import '../assets/styles/NavbarComponent.css';
 
 export default function NavbarComponent({ isLoggedIn}) {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     // const location = useLocation();
     // const { darkMode, setDarkMode } = useTheme();
 
@@ -16,7 +16,7 @@ export default function NavbarComponent({ isLoggedIn}) {
   return (
     <header className="header">
       <div className="header-content">
-        <h1 className="logo">Medusa's Lair</h1>
+        <h1 className="logo" onClick={() => navigate('/')}>Medusa's Lair</h1>
       </div>
     </header>
 

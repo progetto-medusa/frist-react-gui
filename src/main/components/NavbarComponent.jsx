@@ -1,5 +1,5 @@
 // import { useTheme } from '../contexts/ThemeContext';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../assets/styles/NavbarComponent.css';
 
 export default function NavbarComponent({ isLoggedIn}) {

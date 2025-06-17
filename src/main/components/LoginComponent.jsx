@@ -37,6 +37,8 @@ export default function LoginComponent({ onLogin }) {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required/>
+                
+                <button type="submit">Accedi</button>
                 <p className="register-hint">
                     Altrimenti per registrarti
                     <br/>
@@ -44,7 +46,6 @@ export default function LoginComponent({ onLogin }) {
                         Clicca qui
                     </span>  
                 </p>
-                <button type="submit">Accedi</button>
             </form>
         </div>
         <Footer />

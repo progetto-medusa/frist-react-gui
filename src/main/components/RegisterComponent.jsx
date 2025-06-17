@@ -88,7 +88,7 @@ export default function RegisterComponent() {
             <span
               onClick={() => navigate('/login')}
               style={{ color: '#007bff', cursor: 'pointer', textDecoration: 'underline' }}
-            >
+            ><br/>
               Vai al login
             </span>
           </p>

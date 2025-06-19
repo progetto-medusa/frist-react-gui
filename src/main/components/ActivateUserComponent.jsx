@@ -41,7 +41,7 @@ export default function ActivateUserComponent() {
         };
 
         activate();
-    }, [token]);
+    }, [token, API_URL, API_KEY]);
 
     return (
         <div className={darkMode ? 'container dark' : 'container'}>

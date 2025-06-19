@@ -43,6 +43,7 @@ export default function LoginComponent({ onLogin }) {
                 navigate('/error');
             }
         } catch (err) {
+            setStatus('wait');
             setError('Errore di rete o del server.');
         }
     };

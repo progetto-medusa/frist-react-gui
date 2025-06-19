@@ -40,12 +40,14 @@ export default function RegisterComponent() {
         body: JSON.stringify(payload)
       });
       if (response.ok) {
-        navigate('/login');
+        navigate('/success');
       } else {
         const errorData = await response.json();
         setError(errorData.message || 'Errore durante la registrazione.');
+        setStatus('wait');
       }
     } catch (err) {
+      setStatus('wait');
       setError('Errore di rete o del server.');
     }
   };

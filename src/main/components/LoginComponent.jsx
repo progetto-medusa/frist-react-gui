@@ -60,12 +60,14 @@ export default function LoginComponent({ onLogin }) {
                     <form className="login-form" onSubmit={handleSubmit}>
                         <h2>Login</h2>
                         <input type="text"
-                            placeholder="Username" 
+                            placeholder="Email" 
+                            name="email"
                             value={formData.email} 
                             onChange={handleChange}
                             required/>
                         <input type="password"
                             placeholder="Password"
+                            name="password"
                             value={formData.password}
                             onChange={handleChange}
                             required/>

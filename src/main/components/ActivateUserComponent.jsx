@@ -16,6 +16,11 @@ export default function ActivateUserComponent() {
 
     const API_URL = `${process.env.REACT_APP_API_BASE_URL}/progetto-medusa/user/activate`;
     const API_KEY = `${process.env.REACT_APP_X_APP_KEY}`;
+
+    const payload = {
+        application_id: `${process.env.REACT_APP_APPLICATION_ID}`,
+        confirmation_token: token
+    }
     
     useEffect(() => {
         if (!token) {
@@ -26,9 +31,9 @@ export default function ActivateUserComponent() {
         const activate = async () => {
             try {
                 const res = await fetch(API_URL, {
-                    method: 'POST',
+                    method: 'PUT',
                     headers: { 'Content-Type': 'application/json', 'X-APP-KEY': API_KEY},
-                    body: JSON.stringify({ token }),
+                    body: JSON.stringify(payload),
                 });
                 if (res.status === 200) {
                     setStatus('success');

@@ -30,7 +30,8 @@ export default function RegisterComponent() {
 
     const payload = {
       ...formData,
-      role: 'user'
+      role: 'user',
+      application_id: `${process.env.REACT_APP_APPLICATION_ID}`
     };
     setStatus('loading');
     try {

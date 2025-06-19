@@ -1,0 +1,41 @@
+.activate-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.activate-form {
+  align-items: center;
+  display: flex;
+  background-color: #dbdbdb;
+  justify-content: center;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 1px 1px 20px 20px rgb(178 178 178 / 55%);
+  width: 300px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.activate-form button {
+  padding: 1rem 2.5rem;
+  font-size: 1.2rem;
+  background-color: #ff4500;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.activate-form  button:hover {
+  background-color: #e03e00;
+}

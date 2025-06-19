@@ -1,4 +1,4 @@
-import '../assets/styles/CTASection.css';
+import '../../assets/styles/landing/CTASection.css';
 import { useNavigate } from 'react-router-dom';
 
 export default function CTASection() {

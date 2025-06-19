@@ -1,10 +1,10 @@
 import { useTheme } from '../contexts/ThemeContext';
-import '../assets/styles/LandingPage.css';
+import '../assets/styles/landing/LandingPage.css';
 import Navbar from '../components/NavbarComponent';
 import Footer from '../components/FooterComponent';
-import HeroSection from '../sections/HeroSection';
-import CTASection from '../sections/CTASection';
-import FeaturesSection from '../sections/FeaturesSection';
+import HeroSection from './sections/HeroSection';
+import CTASection from './sections/CTASection';
+import FeaturesSection from './sections/FeaturesSection';
 
 export default function LandingPage({ isLoggedIn }) {
   const { darkMode } = useTheme();

@@ -1,4 +1,4 @@
-import '../assets/styles/FeatureCard.css';
+import '../assets/styles/landing//FeatureCard.css';
 
 export default function FeatureCard({ title, description }) {
   return (

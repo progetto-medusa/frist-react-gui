@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import '../assets/styles/HeroSection.css';
-import logo from '../assets/images/logo.png';
+import '../../assets/styles/landing/HeroSection.css';
+import logo from '../../assets/images/logo.png';
 
 export default function HeroSection() {
   const navigate = useNavigate();

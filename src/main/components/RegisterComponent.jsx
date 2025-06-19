@@ -4,10 +4,12 @@ import Navbar from './NavbarComponent';
 import Footer from './FooterComponent';
 import '../assets/styles/RegisterComponent.css';
 import { useTheme } from '../contexts/ThemeContext';
+import LoaderComponent from './LoaderComponent';
 
 export default function RegisterComponent() {
   const { darkMode } = useTheme();
   const navigate = useNavigate();
+  const [status, setStatus] = useState('wait');
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -15,6 +17,7 @@ export default function RegisterComponent() {
   });
   const [error, setError] = useState('');
   const API_URL = `${process.env.REACT_APP_API_BASE_URL}/user`;
+  const API_KEY = `${process.env.REACT_APP_X_APP_KEY}`;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,14 +32,13 @@ export default function RegisterComponent() {
       ...formData,
       role: 'user'
     };
-
+    setStatus('loading');
     try {
       const response = await fetch(API_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' ,'X-APP-KEY':'example-react-app'},
+        headers: { 'Content-Type': 'application/json' ,'X-APP-KEY': API_KEY},
         body: JSON.stringify(payload)
       });
-// console.log('Response:',)
       if (response.ok) {
         navigate('/login');
       } else {
@@ -53,6 +55,7 @@ export default function RegisterComponent() {
       <div className="navbar-wrapper">
         <Navbar isLoggedIn={false} />
       </div>
+      {status === 'loading' && (<LoaderComponent/>)}
       <div className="login-container">
         <form className="login-form" onSubmit={handleSubmit}>
           <h2>Registrati</h2>

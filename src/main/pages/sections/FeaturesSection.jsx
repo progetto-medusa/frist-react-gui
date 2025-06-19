@@ -1,5 +1,5 @@
-import FeatureCard from '../components/FeatureCard';
-import '../assets/styles/FeaturesSection.css';
+import FeatureCard from '../../components/FeatureCard';
+import '../../assets/styles/landing/FeaturesSection.css';
 
 export default function FeaturesSection() {
   const features = [

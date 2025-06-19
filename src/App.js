@@ -2,6 +2,9 @@ import './App.css';
 import LandingPage from './main/pages/LandingPage';
 import LoginComponent from './main/components/LoginComponent';
 import RegisterComponent from './main/components/RegisterComponent';
+import ActivateUserComponent from './main/components/ActivateUserComponent';
+import ErrorComponent from './main/components/ErrorComponent';
+import SuccessComponent from './main/components/SuccessComponent';
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
@@ -19,6 +22,9 @@ function App() {
             <Route path="/" element={<LandingPage isLoggedIn={isLoggedIn} />}/>
             <Route path="/login" element={<LoginComponent onLogin={handleLogin} />}/>
             <Route path="/register" element={<RegisterComponent onLogin={handleLogin} />}/>
+            <Route path="/activate-user" element={<ActivateUserComponent />} />
+            <Route path="/error" element={<ErrorComponent />} />
+            <Route path="/success" element={<SuccessComponent />} />
           </Routes>
         </BrowserRouter>
     </div>

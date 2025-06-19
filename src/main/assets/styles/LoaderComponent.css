@@ -1,0 +1,23 @@
+
+.overlay {
+  position: absolute;
+  z-index: 106;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.589); /* semi-trasparente */
+  pointer-events: all;
+}
+
+.loader {
+  position: absolute;
+  top: 40%;
+  left: 47.1%;
+  border: 12.5px solid #f3f3f3;
+  border-top: 12.5px solid rgb(184, 159, 59);
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  z-index: 108;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}

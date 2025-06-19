@@ -1,21 +1,49 @@
-import React, { useState } from 'react';
+import {useState } from 'react';
 import '../assets/styles/LoginComponent.css';
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../contexts/ThemeContext';
 import Navbar from './NavbarComponent';
 import Footer from './FooterComponent';
+import LoaderComponent from './LoaderComponent';
 
 export default function LoginComponent({ onLogin }) {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
     const { darkMode } = useTheme();
+    const [error, setError] = useState('');
+    const [status, setStatus] = useState('wait');
+    const [formData, setFormData] = useState({
+        password: '',
+        email: ''
+    });
+
+    const API_URL = `${process.env.REACT_APP_API_BASE_URL}/progetto-medusa/user/login`;
+
+    const payload = {
+      ...formData,
+      application_id: `${process.env.REACT_APP_X_APP_KEY}`
+    };
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+    };
 
     const navigate = useNavigate();
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (username && password) {
-            onLogin(true);         
-            navigate('/');    
+    const handleSubmit = async (e) => {
+        setStatus('loading');
+        try {
+            const response = await fetch(API_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' ,'X-APP-KEY': `${process.env.REACT_APP_X_APP_KEY}`},
+                body: JSON.stringify(payload)
+            });
+            if (response.ok) {
+                navigate('/success');
+            } else {
+                // const errorData = await response.json();
+                navigate('/error');
+            }
+        } catch (err) {
+            setError('Errore di rete o del server.');
         }
     };
 
@@ -24,29 +52,34 @@ export default function LoginComponent({ onLogin }) {
         <div className="navbar-wrapper">
             <Navbar isLoggedIn={false} />  
         </div>
+        {status === 'loading' && (<LoaderComponent/>)}
         <div className="login-container">
-            <form className="login-form" onSubmit={handleSubmit}>
-                <h2>Login</h2>
-                <input type="text"
-                    placeholder="Username" 
-                    value={username} 
-                    onChange={(e) => setUsername(e.target.value)} 
-                    required/>
-                <input type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required/>
-                
-                <button type="submit">Accedi</button>
-                <p className="register-hint">
-                    Altrimenti per registrarti
-                    <br/>
-                    <span onClick={() => navigate('/register')} style={{ color: '#007bff', cursor: 'pointer', textDecoration: 'underline' }}>
-                        Clicca qui
-                    </span>  
-                </p>
-            </form>
+            {status !== 'loading' && (
+                <>
+                    <form className="login-form" onSubmit={handleSubmit}>
+                        <h2>Login</h2>
+                        <input type="text"
+                            placeholder="Username" 
+                            value={formData.email} 
+                            onChange={handleChange}
+                            required/>
+                        <input type="password"
+                            placeholder="Password"
+                            value={formData.password}
+                            onChange={handleChange}
+                            required/>
+                        {error && <p className="error">{error}</p>}
+                        <button type="submit">Accedi</button>
+                        <p className="register-hint">
+                            Altrimenti per registrarti
+                            <br/>
+                            <span onClick={() => navigate('/register')} style={{ color: '#007bff', cursor: 'pointer', textDecoration: 'underline' }}>
+                                Clicca qui
+                            </span>  
+                        </p>
+                    </form>
+                </>
+            )}
         </div>
         <Footer />
     </div>

@@ -1,0 +1,31 @@
+.error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.error-form {
+  align-items: center;
+  display: flex;
+  background-color: #dbdbdb;
+  justify-content: center;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 1px 1px 20px 20px rgb(178 178 178 / 55%);
+  width: 300px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.error-form button {
+  padding: 1rem 2.5rem;
+  font-size: 1.2rem;
+  background-color: #ff4500;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}

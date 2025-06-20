@@ -13,31 +13,49 @@ export default function RegisterComponent() {
   const [formData, setFormData] = useState({
     username: '',
     email: '',
-    password: ''
+    password: '',
+    confirm_password: '',
+    accepted_terms: false
   });
   const [error, setError] = useState('');
   const API_URL = `${process.env.REACT_APP_API_BASE_URL}/user`;
   const API_KEY = `${process.env.REACT_APP_X_APP_KEY}`;
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    const { name, value, type, checked } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
 
+    if (formData.password !== formData.confirm_password) {
+      setError('Le password non corrispondono.');
+      return;
+    }
+
+    if (!formData.accepted_terms) {
+      setError('Devi accettare i termini e le condizioni.');
+      return;
+    }
+
     const payload = {
-      ...formData,
+      username: formData.username,
+      email: formData.email,
+      password: formData.password,
       role: 'user',
       application_id: `${process.env.REACT_APP_APPLICATION_ID}`
     };
+
     setStatus('loading');
     try {
       const response = await fetch(API_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' ,'X-APP-KEY': API_KEY},
+        headers: { 'Content-Type': 'application/json', 'X-APP-KEY': API_KEY },
         body: JSON.stringify(payload)
       });
       if (response.ok) {
@@ -58,11 +76,10 @@ export default function RegisterComponent() {
       <div className="navbar-wrapper">
         <Navbar isLoggedIn={false} />
       </div>
-      {status === 'loading' && (<LoaderComponent/>)}
+      {status === 'loading' && <LoaderComponent />}
       <div className="login-container">
         <form className="login-form" onSubmit={handleSubmit}>
           <h2>Registrati</h2>
-          {/* <label htmlFor="name">Nome</label> */}
           <input
             type="text"
             name="username"
@@ -87,6 +104,25 @@ export default function RegisterComponent() {
             onChange={handleChange}
             required
           />
+          <input
+            type="password"
+            name="confirm_password"
+            placeholder="Conferma Password"
+            value={formData.confirm_password}
+            onChange={handleChange}
+            required
+          />
+
+          <label className="checkbox-label">
+            <input
+              type="checkbox"
+              name="accepted_terms"
+              checked={formData.accepted_terms}
+              onChange={handleChange}
+            />
+            Accetto i <a href="/terms-and-conditions" target="_blank" rel="noopener noreferrer">termini e condizioni</a>
+          </label>
+
           {error && <p className="error">{error}</p>}
           <button type="submit">Registrati</button>
           <p className="register-hint">
@@ -94,13 +130,13 @@ export default function RegisterComponent() {
             <span
               onClick={() => navigate('/login')}
               style={{ color: '#007bff', cursor: 'pointer', textDecoration: 'underline' }}
-            ><br/>
+            >
+              <br />
               Vai al login
             </span>
           </p>
         </form>
       </div>
-
       <Footer />
     </div>
   );

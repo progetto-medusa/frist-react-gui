@@ -5,6 +5,7 @@ import RegisterComponent from './main/components/RegisterComponent';
 import ActivateUserComponent from './main/components/ActivateUserComponent';
 import ErrorComponent from './main/components/ErrorComponent';
 import SuccessComponent from './main/components/SuccessComponent';
+import TermsAndConditionComponent from './main/components/TermsAndConditionComponent';
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
@@ -25,6 +26,7 @@ function App() {
             <Route path="/activate-user" element={<ActivateUserComponent />} />
             <Route path="/error" element={<ErrorComponent />} />
             <Route path="/success" element={<SuccessComponent />} />
+            <Route path="/terms-and-conditions" element={<TermsAndConditionComponent />} />
           </Routes>
         </BrowserRouter>
     </div>

@@ -18,7 +18,7 @@ export default function RegisterComponent() {
     accepted_terms: false
   });
   const [error, setError] = useState('');
-  const API_URL = `${process.env.REACT_APP_API_BASE_URL}/user`;
+  const API_URL = `${process.env.REACT_APP_API_BASE_URL}/progetto-medusa/user`;
   const API_KEY = `${process.env.REACT_APP_X_APP_KEY}`;
 
   const handleChange = (e) => {
@@ -48,7 +48,8 @@ export default function RegisterComponent() {
       email: formData.email,
       password: formData.password,
       role: 'user',
-      application_id: `${process.env.REACT_APP_APPLICATION_ID}`
+      application_id: `${process.env.REACT_APP_APPLICATION_ID}`,
+      accepted_terms: formData.accepted_terms
     };
 
     setStatus('loading');
@@ -78,7 +79,9 @@ export default function RegisterComponent() {
       </div>
       {status === 'loading' && <LoaderComponent />}
       <div className="login-container">
-        <form className="login-form" onSubmit={handleSubmit}>
+        {status !== 'loading' && (
+          <>
+            <form className="login-form" onSubmit={handleSubmit}>
           <h2>Registrati</h2>
           <input
             type="text"
@@ -136,6 +139,9 @@ export default function RegisterComponent() {
             </span>
           </p>
         </form>
+          </>
+        )}
+        
       </div>
       <Footer />
     </div>

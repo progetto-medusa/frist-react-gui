@@ -15,7 +15,7 @@ export default function LoginComponent({ onLogin }) {
         email: ''
     });
 
-    const API_URL = `${process.env.REACT_APP_API_BASE_URL}/progetto-medusa/user/login`;
+    const API_URL = `${process.env.REACT_APP_API_AUTH_URL}/auth`;
 
     const payload = {
       ...formData,

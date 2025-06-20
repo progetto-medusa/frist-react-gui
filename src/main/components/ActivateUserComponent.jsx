@@ -16,16 +16,16 @@ export default function ActivateUserComponent() {
 
     const API_URL = `${process.env.REACT_APP_API_BASE_URL}/progetto-medusa/user/activate`;
     const API_KEY = `${process.env.REACT_APP_X_APP_KEY}`;
-
-    const payload = {
-        application_id: `${process.env.REACT_APP_APPLICATION_ID}`,
-        confirmation_token: token
-    }
     
     useEffect(() => {
         if (!token) {
             setStatus('loading');
             return;
+        }
+
+        const payload = {
+            application_id: `${process.env.REACT_APP_APPLICATION_ID}`,
+            confirmation_token: token
         }
 
         const activate = async () => {

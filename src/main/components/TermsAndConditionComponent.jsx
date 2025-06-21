@@ -10,9 +10,7 @@ export default function TermsAndConditionComponent() {
 
     return (
         <div className={darkMode ? 'container dark' : 'container'}>
-            <div className="navbar-wrapper">
-                <Navbar isLoggedIn={false} />
-            </div>
+            <Navbar isLoggedIn={false} />
             <div className="terms-container">
                 <div className="terms-form">
                     <h2>Termini e Condizioni d'Uso</h2>

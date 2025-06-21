@@ -10,9 +10,7 @@ export default function ErrorComponent(){
 
     return (
         <div className={darkMode ? 'container dark' : 'container'}>
-            <div className="navbar-wrapper">
-                <Navbar isLoggedIn={false} />  
-            </div>
+            <Navbar isLoggedIn={false} />  
             <div className="error-container">
                 <div className="error-form">
                     <p>Qualcosa è andato storto</p> 

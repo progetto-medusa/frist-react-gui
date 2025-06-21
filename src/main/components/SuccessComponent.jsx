@@ -10,9 +10,7 @@ export default function SuccessComponent(){
 
     return (
         <div className={darkMode ? 'container dark' : 'container'}>
-            <div className="navbar-wrapper">
-                <Navbar isLoggedIn={false} />  
-            </div>
+            <Navbar isLoggedIn={false} />  
             <div className="success-container">
                 <div className="success-form">
                     <p>Operazione andata a buonfine</p> 

@@ -1,12 +1,13 @@
 .container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background-color: #dbdbdb;
-  color: #000000;
-  transition: all 0.3s ease;
-  font-family: sans-serif;
-  overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #dbdbdb;
+    color: #000000;
+    transition: all 0.3s ease;
+    font-family: sans-serif;
+    overflow-x: hidden;
+    width: 99.2vw;
 }
 
 .container.dark {
@@ -27,11 +28,6 @@
   max-width: 600px;
 }
 
-.navbar-wrapper{
-  display: flex;
-  justify-content: center;
-  background-color: #f9f9f9;
-}
 .custom-shape-divider-top-1749540503 {
     width: 100%;
     overflow: hidden;

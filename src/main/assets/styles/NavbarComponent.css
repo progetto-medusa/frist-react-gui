@@ -1,15 +1,15 @@
 .header {
-  background-color: #f9f9f9;
-  transition: background-color 0.3s, color 0.3s;
-  color: #bbb9b9;
-  z-index: 2;
-  display: flex;
-  flex-direction: row;
-  width: 44%;
-  flex-wrap: nowrap;
-  align-items: center;
-  /* position: fixed; */
-  justify-content: space-evenly;
+    background-color: #f9f9f9;
+    transition: background-color 0.3s, color 0.3s;
+    color: #bbb9b9;
+    z-index: 2;
+    display: flex
+;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    /* position: fixed; */
+    justify-content: center;
 }
 
 /* .header-content {
@@ -26,12 +26,21 @@
 }
 
 .logo {
+  margin:0;
   color: #95864a;
   font-size: 4rem;
   font-family: 'PistonBlack';
   font-weight: bold;
   justify-self: center;
-  margin: 0;
+}
+
+.logo-logged {
+  margin-left: 10rem;
+  color: #95864a;
+  font-size: 4rem;
+  font-family: 'PistonBlack';
+  font-weight: bold;
+  justify-self: center;
 }
 
 .theme-toggle {
@@ -60,4 +69,46 @@
 }
 .header-content h1:hover {
   cursor: pointer
+}
+
+.navbar-wrapper{
+  display: flex;
+  justify-content: center;
+  background-color: #f9f9f9;
+}
+
+.navbar-wrapper-logged {
+  max-height: 120px;
+  width: 100vw;
+  background-color: #f9f9f9;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.header-logged {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.nav-links {
+  margin-right: 50rem;
+  display: flex;
+  gap: 2rem;
+  font-family: 'PistonBlack';
+}
+
+.nav-links span {
+  cursor: pointer;
+  font-size: 2.5rem;
+  color: #555;
+  transition: color 0.3s;
+}
+
+.nav-links span:hover {
+  color: #007bff;
 }

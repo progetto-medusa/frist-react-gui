@@ -50,10 +50,7 @@ export default function ActivateUserComponent() {
 
     return (
         <div className={darkMode ? 'container dark' : 'container'}>
-            
-            <div className="navbar-wrapper">
-                <Navbar isLoggedIn={false} />  
-            </div>
+            <Navbar isLoggedIn={false} />  
             {status === 'loading' && (
                 <LoaderComponent/>
             )}

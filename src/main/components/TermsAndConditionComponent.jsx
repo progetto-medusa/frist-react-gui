@@ -48,7 +48,10 @@ export default function TermsAndConditionComponent() {
                     <p>
                         Per ulteriori informazioni o domande riguardo alla gestione dei dati, ti invitiamo a contattarci direttamente.
                     </p>
-                    <button onClick={() => navigate('/')}>Home</button>
+                    <div className="button-wrapper">
+                        <button className="register-button" onClick={() => navigate('/register')}>Registrati</button>
+                        <button onClick={() => navigate('/')}>Home</button>
+                    </div>
                 </div>
             </div>
             <Footer />

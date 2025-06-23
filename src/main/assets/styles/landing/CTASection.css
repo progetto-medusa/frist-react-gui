@@ -24,7 +24,7 @@
 .cta-section button {
   padding: 1rem 2.5rem;
   font-size: 1.2rem;
-  background-color: #ff4500;
+  background-color: rgb(105 101 85);
   color: white;
   border: none;
   border-radius: 6px;
@@ -32,5 +32,5 @@
 }
 
 .cta-section button:hover {
-  background-color: #e03e00;
+  background-color: rgb(143, 135, 103);
 }

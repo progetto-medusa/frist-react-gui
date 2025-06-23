@@ -71,6 +71,11 @@ export default function LoginComponent({ onLogin }) {
                             required/>
                         {error && <p className="error">{error}</p>}
                         <button type="submit">Accedi</button>
+                        <p >
+                            <span onClick={() => navigate('/recovery')} style={{ color: '#007bff', cursor: 'pointer', textDecoration: 'underline' }}>
+                                Recupera la password
+                            </span>  
+                        </p>
                         <p className="register-hint">
                             Altrimenti per registrarti
                             <br/>

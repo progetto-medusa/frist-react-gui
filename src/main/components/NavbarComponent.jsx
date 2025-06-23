@@ -1,8 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 import '../assets/styles/NavbarComponent.css';
+// import { useTheme } from '../contexts/ThemeContext';
 
 export default function NavbarComponent({ isLoggedIn }) {
   const navigate = useNavigate();
+  // const { darkMode, setDarkMode } = useTheme();
 
   return (
     <>
@@ -27,6 +29,9 @@ export default function NavbarComponent({ isLoggedIn }) {
                 Medusa's Lair
               </h1>
             </div>
+            {/* <button className={`neomorph-button ${darkMode ? 'dark' : 'light'}`} onClick={() => setDarkMode(!darkMode)}>
+              {darkMode ? '🌙' : '☀️'}
+            </button> */}
           </header>
         </div>
       )}

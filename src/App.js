@@ -37,23 +37,23 @@ function App() {
               <Route path="/games" element={<HomePage isLoggedIn={true} />} />
               <Route path="/characters" 
                 element={
-                // <ProtectedRoute>
+                <ProtectedRoute>
                   <HomePage isLoggedIn={true} />
-                // </ProtectedRoute>
+                </ProtectedRoute>
                 } 
               />
               <Route path="/campaigns" 
                 element={
-                  // <ProtectedRoute>
+                  <ProtectedRoute>
                     <CampaignComponent isLoggedIn={true} />
-                  // </ProtectedRoute>
+                  </ProtectedRoute>
                 } 
               />
               <Route path="/home-page" 
                 element={
-                  // <ProtectedRoute> 
+                  <ProtectedRoute> 
                     <HomePage isLoggedIn={true} />
-                  // </ProtectedRoute> //
+                  </ProtectedRoute> //
                 } 
               />
             </Routes>

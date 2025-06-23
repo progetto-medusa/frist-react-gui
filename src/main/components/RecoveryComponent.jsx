@@ -17,46 +17,12 @@ export default function RecoveryComponent() {
     email: '',
     confirm_email: '',
     application_id: `${process.env.REACT_APP_APPLICATION_ID}`,
+    password: '',
+    confirm_password: ''
   });
 
   const token = searchParams.get('token');
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (token) {
-      const sendResetRequest = async () => {
-        setStatus('loading');
-        try {
-          const response = await fetch(`${API_BASE_URL}/progetto-medusa/user/reset`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'X-APP-KEY': API_KEY,
-            },
-            body: JSON.stringify({
-              application_id: formData.application_id,
-              token: token,
-            }),
-          });
-
-          if (response.ok) {
-            navigate('/success');
-          } else {
-            navigate('/error');
-            const errorData = await response.json();
-            setError(errorData.message || 'Errore durante la procedura di reset.');
-            setStatus('wait');
-          }
-        } catch (err) {
-            navigate('/error');
-            setError('Errore di rete o del server.');
-            setStatus('wait');
-        }
-      };
-
-      sendResetRequest();
-    }
-  }, [token, API_BASE_URL, API_KEY, formData.application_id, navigate]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -65,6 +31,45 @@ export default function RecoveryComponent() {
       [name]: value,
     }));
   };
+  
+  const handleRecoverySubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+
+    if (formData.password !== formData.confirm_password) {
+      setError('Le email non corrispondono.');
+      return;
+    }
+
+    setStatus('loading');
+    try {
+      const response = await fetch(`${API_BASE_URL}/progetto-medusa/user/reset`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-APP-KEY': API_KEY,
+        },
+        body: JSON.stringify({
+          application_id: formData.application_id,
+          password: formData.password,
+          token: token,
+        }),
+      });
+
+      if (response.ok) {
+        navigate('/success');
+      } else {
+        navigate('/error');
+        const errorData = await response.json();
+        setError(errorData.message || 'Errore durante la procedura di reset.');
+        setStatus('wait');
+      }
+      } catch (err) {
+          navigate('/error');
+          setError('Errore di rete o del server.');
+          setStatus('wait');
+      }
+    };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -84,7 +89,8 @@ export default function RecoveryComponent() {
           'X-APP-KEY': API_KEY,
         },
         body: JSON.stringify({
-          ...formData,
+          application_id: formData.application_id,
+          email: formData.email
         }),
       });
 
@@ -138,7 +144,30 @@ export default function RecoveryComponent() {
                 </>
             ) : (
                 <>
-
+                  <form className="recovery-form" onSubmit={handleRecoverySubmit}>
+                    <h2>Inserisci la nuova password</h2>
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Password (min 8 caratteri)"
+                        value={formData.password}
+                        onChange={handleChange}
+                        required
+                    />
+                    <input
+                        type="password"
+                        name="confirm_password"
+                        placeholder="Conferma Password"
+                        value={formData.confirm_password}
+                        onChange={handleChange}
+                        required
+                    />
+                    <p>
+                        Riceverai un'email di conferma
+                    </p>
+                    {error && <p className="error">{error}</p>}
+                    <button type="submit">Recupera</button>
+                  </form>
                 </>
             )};
       </div>

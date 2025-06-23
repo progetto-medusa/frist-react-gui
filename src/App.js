@@ -5,6 +5,7 @@ import RegisterComponent from './main/components/RegisterComponent';
 import ActivateUserComponent from './main/components/ActivateUserComponent';
 import ErrorComponent from './main/components/ErrorComponent';
 import SuccessComponent from './main/components/SuccessComponent';
+import CampaignComponent from './main/components/CampaignComponent';
 import TermsAndConditionComponent from './main/components/TermsAndConditionComponent';
 import HomePage from './main/pages/HomePage';
 import React, { useState } from 'react';
@@ -30,7 +31,7 @@ function App() {
             <Route path="/terms-and-conditions" element={<TermsAndConditionComponent />} />
             <Route path="/games" element={<HomePage isLoggedIn={true} />} />
             <Route path="/characters" element={<HomePage isLoggedIn={true} />} />
-            <Route path="/campaigns" element={<HomePage isLoggedIn={true} />} />
+            <Route path="/campaigns" element={<CampaignComponent isLoggedIn={true} />} />
             <Route path="/home-page" element={<HomePage isLoggedIn={true} />} />
           </Routes>
         </BrowserRouter>

@@ -80,63 +80,63 @@ export default function RegisterComponent() {
         {status !== 'loading' && (
           <>
             <form className="login-form" onSubmit={handleSubmit}>
-          <h2>Registrati</h2>
-          <input
-            type="text"
-            name="username"
-            placeholder="Nome"
-            value={formData.username}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password (min 8 caratteri)"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="password"
-            name="confirm_password"
-            placeholder="Conferma Password"
-            value={formData.confirm_password}
-            onChange={handleChange}
-            required
-          />
-
-          <label className="checkbox-label">
+            <h2>Registrati</h2>
             <input
-              type="checkbox"
-              name="accepted_terms"
-              checked={formData.accepted_terms}
+              type="text"
+              name="username"
+              placeholder="Nome"
+              value={formData.username}
               onChange={handleChange}
+              required
             />
-            Accetto i <a href="/terms-and-conditions" target="_blank" rel="noopener noreferrer">termini e condizioni</a>
-          </label>
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password (min 8 caratteri)"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="password"
+              name="confirm_password"
+              placeholder="Conferma Password"
+              value={formData.confirm_password}
+              onChange={handleChange}
+              required
+            />
 
-          {error && <p className="error">{error}</p>}
-          <button type="submit">Registrati</button>
-          <p className="register-hint">
-            Hai già un account?{' '}
-            <span
-              onClick={() => navigate('/login')}
-              style={{ color: '#007bff', cursor: 'pointer', textDecoration: 'underline' }}
-            >
-              <br />
-              Vai al login
-            </span>
-          </p>
-        </form>
+            <label className="checkbox-label">
+              <input
+                type="checkbox"
+                name="accepted_terms"
+                checked={formData.accepted_terms}
+                onChange={handleChange}
+              />
+              Accetto i <a href="/terms-and-conditions" target="_blank" rel="noopener noreferrer">termini e condizioni</a>
+            </label>
+
+            {error && <p className="error">{error}</p>}
+            <button type="submit">Registrati</button>
+            <p className="register-hint">
+              Hai già un account?{' '}
+              <span
+                onClick={() => navigate('/login')}
+                style={{ color: '#007bff', cursor: 'pointer', textDecoration: 'underline' }}
+              >
+                <br />
+                Vai al login
+              </span>
+            </p>
+          </form>
           </>
         )}
         

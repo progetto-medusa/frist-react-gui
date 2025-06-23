@@ -11,7 +11,7 @@ export default function NavbarComponent({ isLoggedIn }) {
       {isLoggedIn ? (
         <div className="navbar-wrapper-logged">
           <header className="header-logged">
-            <div className="logo-section" onClick={() => navigate('/')}>
+            <div className="logo-section" onClick={() => navigate('/home-page')} style={{ cursor: 'pointer' }}>
               <h1 className="logo-logged">ML</h1>
             </div>
             <nav className="nav-links">

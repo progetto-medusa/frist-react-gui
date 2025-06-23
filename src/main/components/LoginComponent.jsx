@@ -2,14 +2,17 @@ import {useState } from 'react';
 import '../assets/styles/LoginComponent.css';
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../contexts/ThemeContext';
+import { useAuth  } from '../contexts/AuthProvider';
 import Navbar from './NavbarComponent';
 import Footer from './FooterComponent';
 import LoaderComponent from './LoaderComponent';
 
 export default function LoginComponent({ onLogin }) {
+    const { login } = useAuth(); 
     const { darkMode } = useTheme();
     const [error, setError] = useState('');
     const [status, setStatus] = useState('wait');
+
     const [formData, setFormData] = useState({
         password: '',
         email: ''
@@ -29,18 +32,38 @@ export default function LoginComponent({ onLogin }) {
 
     const navigate = useNavigate();
     const handleSubmit = async (e) => {
+        e.preventDefault(); // 🔧 evita il refresh della pagina
         setStatus('loading');
+        setError('');
+
         try {
             const response = await fetch(API_URL, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' ,'X-APP-KEY': `${process.env.REACT_APP_X_APP_KEY}`},
-                body: JSON.stringify(payload)
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-APP-KEY': process.env.REACT_APP_X_APP_KEY
+                },
+                body: JSON.stringify({
+                    ...formData,
+                    application_id: process.env.REACT_APP_X_APP_KEY
+                })
             });
+
             if (response.ok) {
-                navigate('/success');
+                const data = await response.json();
+
+                if (data.token) {
+                    login(data.token); // ✅ Salva il token globalmente
+                    navigate('/success');
+                } else {
+                    setStatus('wait');
+                    setError('Token non ricevuto dal server.');
+                }
             } else {
-                // const errorData = await response.json();
-                navigate('/error');
+                const errorData = await response.json().catch(() => ({}));
+                const message = errorData.message || 'Credenziali errate o errore del server.';
+                setStatus('wait');
+                setError(message);
             }
         } catch (err) {
             setStatus('wait');
@@ -71,12 +94,12 @@ export default function LoginComponent({ onLogin }) {
                             required/>
                         {error && <p className="error">{error}</p>}
                         <button type="submit">Accedi</button>
-                        <p >
-                            <span onClick={() => navigate('/recovery')} style={{ color: '#007bff', cursor: 'pointer', textDecoration: 'underline' }}>
+                        <p style={{ margin:'0'}}>
+                            <span onClick={() => navigate('/recovery')} style={{ color: '#007bff', cursor: 'pointer', textDecoration: 'underline'  }} >
                                 Recupera la password
                             </span>  
                         </p>
-                        <p className="register-hint">
+                        <p className="register-hint"  style={{ marginTop:'0'}}>
                             Altrimenti per registrarti
                             <br/>
                             <span onClick={() => navigate('/register')} style={{ color: '#007bff', cursor: 'pointer', textDecoration: 'underline' }}>

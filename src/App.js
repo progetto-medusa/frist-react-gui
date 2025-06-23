@@ -6,6 +6,9 @@ import ActivateUserComponent from './main/components/ActivateUserComponent';
 import ErrorComponent from './main/components/ErrorComponent';
 import SuccessComponent from './main/components/SuccessComponent';
 import CampaignComponent from './main/components/CampaignComponent';
+import RecoveryComponent from './main/components/RecoveryComponent';
+import { AuthProvider } from "./main/contexts/AuthProvider";
+import ProtectedRoute from "./main/contexts/ProtectedRoute";
 import TermsAndConditionComponent from './main/components/TermsAndConditionComponent';
 import HomePage from './main/pages/HomePage';
 import React, { useState } from 'react';
@@ -20,21 +23,42 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<LandingPage isLoggedIn={isLoggedIn} />}/>
-            <Route path="/login" element={<LoginComponent onLogin={handleLogin} />}/>
-            <Route path="/register" element={<RegisterComponent onLogin={handleLogin} />}/>
-            <Route path="/activate-user" element={<ActivateUserComponent />} />
-            <Route path="/error" element={<ErrorComponent />} />
-            <Route path="/success" element={<SuccessComponent />} />
-            <Route path="/terms-and-conditions" element={<TermsAndConditionComponent />} />
-            <Route path="/games" element={<HomePage isLoggedIn={true} />} />
-            <Route path="/characters" element={<HomePage isLoggedIn={true} />} />
-            <Route path="/campaigns" element={<CampaignComponent isLoggedIn={true} />} />
-            <Route path="/home-page" element={<HomePage isLoggedIn={true} />} />
-          </Routes>
-        </BrowserRouter>
+      <AuthProvider>
+        <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<LandingPage isLoggedIn={isLoggedIn} />}/>
+              <Route path="/login" element={<LoginComponent onLogin={handleLogin} />}/>
+              <Route path="/register" element={<RegisterComponent onLogin={handleLogin} />}/>
+              <Route path="/recovery" element={<RecoveryComponent onLogin={handleLogin} />}/>
+              <Route path="/activate-user" element={<ActivateUserComponent />} />
+              <Route path="/error" element={<ErrorComponent />} />
+              <Route path="/success" element={<SuccessComponent />} />
+              <Route path="/terms-and-conditions" element={<TermsAndConditionComponent />} />
+              <Route path="/games" element={<HomePage isLoggedIn={true} />} />
+              <Route path="/characters" 
+                element={
+                <ProtectedRoute>
+                  <HomePage isLoggedIn={true} />
+                </ProtectedRoute>
+                } 
+              />
+              <Route path="/campaigns" 
+                element={
+                  <ProtectedRoute>
+                    <CampaignComponent isLoggedIn={true} />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route path="/home-page" 
+                element={
+                  <ProtectedRoute> 
+                    <HomePage isLoggedIn={true} />
+                  </ProtectedRoute> 
+                } 
+              />
+            </Routes>
+          </BrowserRouter>
+        </AuthProvider>
     </div>
   );
 }

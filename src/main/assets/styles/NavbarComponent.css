@@ -42,7 +42,9 @@
   font-weight: bold;
   justify-self: center;
 }
-
+.logo-logged:hover {
+  color: #248629;
+}
 .theme-toggle {
   justify-self: end; /* pulsante sulla colonna di destra */
   padding: 0.5rem 1rem;
@@ -86,16 +88,17 @@
 }
 
 .header-logged {
+  position: relative;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #dfdfdf;
   color: #333;
+  padding: 0 2rem;
 }
 
 .nav-links {
-  margin-right: 50rem;
   display: flex;
   gap: 2rem;
   font-family: 'PistonBlack';
@@ -104,7 +107,7 @@
 .nav-links span {
   cursor: pointer;
   font-size: 2.5rem;
-  color: #555;
+  color: #252525;
 }
 
 .nav-links span:hover {
@@ -137,4 +140,19 @@
 background: rgb(105 101 85);
     color: #f1f1f1;
     box-shadow: 5px 5px 20px #494949, -5px -6px 20px #5d5d5d;
+}
+
+.logout-button {
+  margin-right: 10rem;
+  font-family: 'PistonBlack';
+  font-size: 2.5rem;
+  color: rgb(105 101 85);
+}
+
+.logout-button:hover {
+  color: #a71d1d;
+}
+
+.shadow-bottom {
+	box-shadow: 0 12px 20px -12px rgba(0, 0, 0, 0.35);
 }

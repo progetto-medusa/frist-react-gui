@@ -6,7 +6,9 @@ import ActivateUserComponent from './main/components/ActivateUserComponent';
 import ErrorComponent from './main/components/ErrorComponent';
 import SuccessComponent from './main/components/SuccessComponent';
 import CampaignComponent from './main/components/CampaignComponent';
-import RecoveryComponent from './main/components/CampaignComponent';
+import CharacterComponent from './main/components/CharacterComponent';
+import RecoveryComponent from './main/components/RecoveryComponent';
+import GamesComponent from './main/components/GamesComponent';
 import { AuthProvider } from "./main/contexts/AuthProvider";
 import ProtectedRoute from "./main/contexts/ProtectedRoute";
 import TermsAndConditionComponent from './main/components/TermsAndConditionComponent';
@@ -34,7 +36,12 @@ function App() {
               <Route path="/error" element={<ErrorComponent />} />
               <Route path="/success" element={<SuccessComponent />} />
               <Route path="/terms-and-conditions" element={<TermsAndConditionComponent />} />
-              <Route path="/games" element={<HomePage isLoggedIn={true} />} />
+              <Route path="/games" 
+                element={
+                  <ProtectedRoute>
+                    <GamesComponent isLoggedIn={true} />
+                  </ProtectedRoute>
+                } />
               <Route path="/characters" 
                 element={
                 <ProtectedRoute>

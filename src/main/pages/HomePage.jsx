@@ -9,10 +9,9 @@ export default function HomePage({ isLoggedIn}) {
     <div className={darkMode ? 'container dark' : 'container'}>
       <Navbar isLoggedIn={isLoggedIn} />  
       <div className="home-page-container">
-        <div className="home-page-content">
-        </div>
+          <p>Home Page<br/><br/>WORK IN PROGRESS</p>
       </div>
-      <Footer />
+      <Footer isLoggedIn={true}/>
     </div>
     );
 }

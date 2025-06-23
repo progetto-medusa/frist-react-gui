@@ -129,7 +129,7 @@ export default function RecoveryComponent() {
                             required
                         />
                         <p>
-                            Riceverai un link<br />cui reimpostare la password
+                            Riceverai un link per reimpostare<br />la password
                         </p>
                         {error && <p className="error">{error}</p>}
                         <button type="submit">Recupera</button>

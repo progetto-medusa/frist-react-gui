@@ -155,7 +155,7 @@ export default function CampaignComponent({ isLoggedIn }) {
           </button>
         </form>
       </div>
-      <Footer/>
+      <Footer isLoggedIn={true}/>
     </div>
   );
 }

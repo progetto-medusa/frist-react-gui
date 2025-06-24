@@ -11,7 +11,7 @@ export default function CharacterComponent({ isLoggedIn }) {
         <div className="character-container">
             <p>Personaggi<br/><br/>WORK IN PROGRESS</p>
         </div>
-        <Footer isLoggedIn={true}/>
+        <Footer />
       </div>
   );
 }

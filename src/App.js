@@ -45,7 +45,7 @@ function App() {
               <Route path="/characters" 
                 element={
                 <ProtectedRoute>
-                  <HomePage isLoggedIn={true} />
+                  <CharacterComponent isLoggedIn={true} />
                 </ProtectedRoute>
                 } 
               />
@@ -60,7 +60,7 @@ function App() {
                 element={
                   <ProtectedRoute> 
                     <HomePage isLoggedIn={true} />
-                  </ProtectedRoute> //
+                  </ProtectedRoute> 
                 } 
               />
             </Routes>

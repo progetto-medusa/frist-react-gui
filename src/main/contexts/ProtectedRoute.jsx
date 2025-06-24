@@ -5,7 +5,7 @@ import { useAuth } from './AuthProvider';
 export default function ProtectedRoute({ children }) {
   const { token } = useAuth();
 
-  if (token) {
+  if (!token) {
     return <Navigate to="/login" replace />;
   }
 

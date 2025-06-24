@@ -20,11 +20,6 @@ export default function LoginComponent({ onLogin }) {
 
     const API_URL = `${process.env.REACT_APP_API_AUTH_URL}/auth`;
 
-    const payload = {
-      ...formData,
-      application_id: `${process.env.REACT_APP_X_APP_KEY}`
-    };
-
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));

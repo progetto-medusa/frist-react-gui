@@ -3,7 +3,7 @@ import Footer from './FooterComponent';
 import { useTheme } from '../contexts/ThemeContext';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import '../assets/styles/RecoveryComponent.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import LoaderComponent from './LoaderComponent';
 
 export default function RecoveryComponent() {

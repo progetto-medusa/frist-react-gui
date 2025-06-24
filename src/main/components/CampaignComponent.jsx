@@ -5,8 +5,8 @@ import { useTheme } from "../contexts/ThemeContext";
 import "../assets/styles/home/CampaignComponent.css";
 
 export default function CampaignComponent({ isLoggedIn }) {
-  const API_BASE_URL = `${process.env.REACT_APP_API_BASE_URL}/progetto-medusa/campaign/create`;
-  const API_KEY = `${process.env.REACT_APP_X_APP_KEY}`;
+  // const API_BASE_URL = `${process.env.REACT_APP_API_BASE_URL}/progetto-medusa/campaign/create`;
+  // const API_KEY = `${process.env.REACT_APP_X_APP_KEY}`;
 
   const { darkMode } = useTheme();
 
@@ -46,10 +46,10 @@ export default function CampaignComponent({ isLoggedIn }) {
       return;
     }
 
-    const finalData = {
-      ...formData,
-      applicationId: process.env.REACT_APP_X_APP_KEY,
-    };
+    // const finalData = {
+    //   ...formData,
+    //   applicationId: process.env.REACT_APP_X_APP_KEY,
+    // };
    
     /*
     fetch("/api/campaigns", {

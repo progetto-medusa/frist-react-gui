@@ -40,7 +40,7 @@ export default function LoginComponent({ onLogin }) {
                 },
                 body: JSON.stringify({
                     ...formData,
-                    application_id: process.env.REACT_APP_X_APP_KEY
+                    application_id: process.env.REACT_APP_APPLICATION_ID
                 })
             });
 

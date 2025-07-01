@@ -49,7 +49,7 @@ export default function LoginComponent({ onLogin }) {
 
                 if (data.token) {
                     login(data.token); // ✅ Salva il token globalmente
-                    navigate('/success');
+                    navigate('/home-page');
                 } else {
                     setStatus('wait');
                     setError('Token non ricevuto dal server.');

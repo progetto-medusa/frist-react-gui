@@ -5,19 +5,20 @@ import { useTheme } from "../contexts/ThemeContext";
 import "../assets/styles/home/CampaignComponent.css";
 
 export default function CampaignComponent({ isLoggedIn }) {
-  // const API_BASE_URL = `${process.env.REACT_APP_API_BASE_URL}/progetto-medusa/campaign/create`;
-  // const API_KEY = `${process.env.REACT_APP_X_APP_KEY}`;
+  const API_BASE_URL = `${process.env.REACT_APP_API_CAMPAIGN_URL}/progetto-medusa/campaign/create`;
+  const API_KEY = `${process.env.REACT_APP_X_APP_KEY}`;
 
   const { darkMode } = useTheme();
 
   const [formData, setFormData] = useState({
     name: "",
     description: "",
-    ruleVersion: "",
-    bePrivate: false,
+    rule_version: "",
+    insert_date: "",
+    be_private: false,
     password: "",
     confirmPassword: "",
-    applicationId: "",
+    application_id: "",
     creator_uuid:""
   });
 
@@ -37,30 +38,33 @@ export default function CampaignComponent({ isLoggedIn }) {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Check password match if private
-    if (formData.bePrivate && formData.password !== formData.confirmPassword) {
+    if (formData.be_private && formData.password !== formData.confirmPassword) {
       setPasswordError("Le password non coincidono.");
       return;
     }
 
-    // const finalData = {
-    //   ...formData,
-    //   applicationId: process.env.REACT_APP_X_APP_KEY,
-    // };
+const application_id = process.env.REACT_APP_APPLICATION_ID;
+    const finalData = {
+      ...formData,
+      application_id
+    };
    
-    /*
-    fetch("/api/campaigns", {
+    
+    const response = await fetch(API_BASE_URL, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { 'Content-Type': 'application/json', 
+        'X-APP-KEY': API_KEY 
+      },
       body: JSON.stringify(finalData),
     })
       .then((res) => res.json())
       .then((data) => console.log("Success:", data))
       .catch((err) => console.error("Error:", err));
-    */
+    
   };
 
   return (
@@ -88,9 +92,9 @@ export default function CampaignComponent({ isLoggedIn }) {
             <label className="block font-medium">Rule Version</label>
             <input
               type="text"
-              name="ruleVersion"
+              name="rule_version"
               required
-              value={formData.ruleVersion}
+              value={formData.rule_version}
               onChange={handleChange}
               className="form-input"
             />
@@ -100,14 +104,14 @@ export default function CampaignComponent({ isLoggedIn }) {
             <label className="font-medium">Private Campaign?</label>
             <input
               type="checkbox"
-              name="bePrivate"
-              checked={formData.bePrivate}
+              name="be_private"
+              checked={formData.be_private}
               onChange={handleChange}
               className="ml-2"
             />
           </div>
 
-          {formData.bePrivate && (
+          {formData.be_private && (
             <>
               <div className="create-campaing-form-component">
                 <label className="block font-medium">Password</label>

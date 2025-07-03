@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "./NavbarComponent";
 import Footer from "./FooterComponent";
 import { useTheme } from "../contexts/ThemeContext";
 import "../assets/styles/home/CampaignComponent.css";
+import { jwtDecode } from "jwt-decode";
+
 
 export default function CampaignComponent({ isLoggedIn }) {
   const API_BASE_URL = `${process.env.REACT_APP_API_CAMPAIGN_URL}/progetto-medusa/campaign/create`;
@@ -18,9 +20,9 @@ export default function CampaignComponent({ isLoggedIn }) {
     be_private: false,
     password: "",
     confirmPassword: "",
-    application_id: "",
-    creator_uuid:""
+    application_id: ""
   });
+
 
   const [passwordError, setPasswordError] = useState("");
 
@@ -47,10 +49,23 @@ export default function CampaignComponent({ isLoggedIn }) {
       return;
     }
 
+
+    const token = localStorage.getItem('pm-react-app-token');
+    console.log(token);
+    let userUuid = "";
+    try {
+      const decoded = jwtDecode(token);
+      userUuid = decoded["uuid"]; 
+      console.log(decoded); // { userId: 123, email: "test@email.com" }
+    } catch (error) {
+      console.error("Token non valido", error);
+    }
+
 const application_id = process.env.REACT_APP_APPLICATION_ID;
     const finalData = {
       ...formData,
-      application_id
+      application_id,
+      creator_uuid: userUuid
     };
    
     
